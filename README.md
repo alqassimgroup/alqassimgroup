@@ -1,16 +1,24 @@
-## Hi there 👋
+ Al Qassim Group Cars 
+made by ياسر الوحش  **Al Qassim Group**.
 
-<!--
-**alqassimgroup/alqassimgroup** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+## 🚗 Features
 
-Here are some ideas to get you started:
+- Modern, flashy UI
+- Filters (SUV / Sedan / All)
+- Image car cards with modals
+- Static, fast, and mobile‑friendly
+- Hosted entirely on GitHub Pages
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## 📁 Files
+
+- `index.html` — Main website
+- `cars.json` — Car data (with your images)
+- `assets/` — Optional images & logo
+
+## 🚀 Deployment
+
+1. Create a new public GitHub repository  
+2. Upload all files to the repository  
+3. Go to **Settings → Pages**  
+4. Set source branch to **main/root**  
+5. Your site will be live at:

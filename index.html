@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al Qassim Group Cars</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Roboto',sans-serif;background:#f4f6f9;color:#333;scroll-behavior:smooth;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;}
+
+/* Header */
+header{background:linear-gradient(90deg,#0b3d91,#1e5ed8);padding:20px 50px;display:flex;justify-content:space-between;align-items:center;color:white;position:sticky;top:0;z-index:100;}
+header .logo{font-size:24px;font-weight:bold;}
+header nav a{margin-left:25px;font-weight:500;transition:0.3s;}
+header nav a:hover{color:#ffd700;}
+
+/* Hero */
+.hero{background:linear-gradient(rgba(11,61,145,0.7),rgba(11,61,145,0.7)), url('https://images.unsplash.com/photo-1606813902937-682c98e68d19?auto=format&fit=crop&w=1950&q=80'); background-size:cover;background-position:center;color:white;padding:140px 20px;text-align:center;animation:fadeIn 1s;}
+.hero h1{font-size:48px;margin-bottom:20px;}
+.hero p{font-size:20px;margin-bottom:30px;}
+.hero button{background:#ffd700;color:#0b3d91;padding:15px 35px;border:none;border-radius:5px;font-size:18px;cursor:pointer;transition:0.3s;}
+.hero button:hover{background:#ffbf00;}
+
+/* Sections */
+.section{padding:80px 20px;text-align:center;}
+.section h2{font-size:36px;margin-bottom:30px;color:#0b3d91;}
+.section p{font-size:18px;max-width:700px;margin:0 auto 40px auto;line-height:1.6;}
+
+/* Car Listings */
+.filters{margin-bottom:30px;display:flex;justify-content:center;gap:15px;flex-wrap:wrap;}
+.filters button{padding:10px 20px;border:none;border-radius:5px;background:#0b3d91;color:white;cursor:pointer;transition:0.3s;}
+.filters button:hover{background:#1e5ed8;}
+.filters button.active{background:#ffd700;color:#0b3d91;}
+
+.cars{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;}
+.car-card{background:white;border-radius:10px;box-shadow:0 10px 20px rgba(0,0,0,0.1);width:300px;overflow:hidden;transition:0.3s;cursor:pointer;position:relative;animation:fadeInUp 0.6s;}
+.car-card:hover{transform:translateY(-10px);}
+.car-card img{height:180px;object-fit:cover;}
+.car-card .info{padding:20px;text-align:left;}
+.car-card .info h3{color:#0b3d91;margin-bottom:10px;}
+.car-card .info p{margin-bottom:5px;font-size:16px;}
+.car-card .info .price{font-weight:bold;color:#ffbf00;font-size:18px;}
+
+/* Modal */
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;z-index:200;}
+.modal-content{background:white;padding:30px;border-radius:10px;max-width:500px;width:90%;position:relative;}
+.modal-content h3{color:#0b3d91;margin-bottom:10px;}
+.modal-content p{margin-bottom:10px;}
+.close-btn{position:absolute;top:15px;right:15px;font-size:20px;font-weight:bold;color:#333;cursor:pointer;}
+
+/* Footer */
+footer{background:#0b3d91;color:white;text-align:center;padding:25px 20px;}
+footer p{margin:0;font-size:16px;}
+
+/* Animations */
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+/* Responsive */
+@media(max-width:768px){.car-card{width:90%;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Al Qassim Group</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#cars">Cars</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Drive Excellence with Al Qassim Group</h1>
+  <p>Discover premium cars and unmatched automotive services.</p>
+  <button onclick="document.getElementById('cars').scrollIntoView({behavior:'smooth'})">View Cars</button>
+</section>
+
+<section id="about" class="section">
+  <h2>About Us</h2>
+  <p>Al Qassim Group is a leading automotive company dedicated to providing premium vehicles and exceptional client experiences. Our mission is to connect clients with quality and performance in every car we present.</p>
+</section>
+
+<section id="cars" class="section">
+  <h2>Our Cars</h2>
+
+  <div class="filters">
+    <button class="filter-btn active" data-type="all">All</button>
+    <button class="filter-btn" data-type="SUV">SUV</button>
+    <button class="filter-btn" data-type="Sedan">Sedan</button>
+  </div>
+
+  <div class="cars" id="car-list"></div>
+</section>
+
+<section id="contact" class="section">
+  <h2>Contact Us</h2>
+  <p>Email: info@alqassimgroup.com | Phone: +966-XXX-XXXX</p>
+</section>
+
+<footer>
+  <p>© 2026 Al Qassim Group. All Rights Reserved.</p>
+</footer>
+
+<!-- Load Cars from JSON -->
+<script>
+fetch("cars.json")
+  .then(res => res.json())
+  .then(cars => {
+    const container = document.getElementById('car-list');
+    function renderCars(filter='all') {
+      container.innerHTML = '';
+      cars.filter(car => filter==='all' || car.type===filter).forEach(car => {
+        const card = document.createElement('div');
+        card.className = 'car-card';
+        card.innerHTML = `
+          <img src="${car.image}" alt="${car.name}">
+          <div class="info">
+            <h3>${car.name}</h3>
+            <p>${car.year} | ${car.mileage}</p>
+            <p class="price">${car.price}</p>
+          </div>
+        `;
+        card.addEventListener('click', () => {
+          document.getElementById('modalName').innerText = car.name;
+          document.getElementById('modalYear').innerText = 'Year: '+car.year;
+          document.getElementById('modalMileage').innerText = 'Mileage: '+car.mileage;
+          document.getElementById('modalPrice').innerText = 'Price: '+car.price;
+          document.getElementById('modal').style.display = 'flex';
+        });
+        container.appendChild(card);
+      });
+    }
+    renderCars();
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderCars(btn.getAttribute('data-type'));
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

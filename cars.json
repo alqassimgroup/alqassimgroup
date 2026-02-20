@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Rox 01",
+    "price": "AED 85,000",
+    "year": "2024",
+    "mileage": "0 KM",
+    "type": "SUV",
+    "image": "https://alqassimgroup.net/assets/admin/img/car/1766482566.jpg"
+  },
+  {
+    "name": "LYNK CO 900 EM‑P",
+    "price": "AED 120,000",
+    "year": "2023",
+    "mileage": "1,200 KM",
+    "type": "SUV",
+    "image": "https://alqassimgroup.net/assets/admin/img/car/1756913664.jpg"
+  },
+  {
+    "name": "BMW i4 eDrive40",
+    "price": "AED 140,000",
+    "year": "2024",
+    "mileage": "0 KM",
+    "type": "Sedan",
+    "image": "https://alqassimgroup.net/assets/admin/img/car/1756913664.jpg"
+  },
+  {
+    "name": "2024 ROX 01 VIP",
+    "price": "AED 95,000",
+    "year": "2024",
+    "mileage": "0 KM",
+    "type": "SUV",
+    "image": "https://alqassimgroup.net/assets/admin/img/car/1750758669.jpg"
+  },
+  {
+    "name": "GCC Bestune T77",
+    "price": "AED 75,000",
+    "year": "2023",
+    "mileage": "5,400 KM",
+    "type": "SUV",
+    "image": "https://alqassimgroup.net/assets/admin/img/car/1755789743.jpg"
+  }
+]
